@@ -22,6 +22,20 @@
 
   3. strip() 剔除字符串两边都空白
 
+```
+name="ada lovelace"
+print(name.title())
+print(name.upper())
+print(name.lower())
+
+print("Languages:\n\tPython\n\tC\n\tJavaScript")
+
+favorite_language=' python '
+print(favorite_language.rstrip())
+print(favorite_language.lstrip())
+print(favorite_language.strip())
+```
+
 ## 第三章 列表简介
 
 ### []表示列表，并用逗号分隔其中的元素，索引从0而不是1开始
@@ -45,6 +59,38 @@
   2. lst.reverse() 倒着打印列表
 
   3. len(c) 可快速获悉列表的长度
+ 
+```
+bicycles=['trek','cannondale','redline','specialized']
+print(bicycles)
+print(bicycles[0])
+print(bicycles[0].title())
+
+motorcycles=['honda','yamaha','suzuki']
+motorcycles.append('ducati')
+print(motorcycles)
+
+motorcycles.insert(0,'haojue')
+print(motorcycles)
+
+del motorcycles[0]
+print(motorcycles)
+
+popped_motorcycle=motorcycles.pop()
+print(motorcycles)
+print(popped_motorcycle)
+
+too_expensive='suzuki'
+motorcycles.remove(too_expensive)
+print(motorcycles)
+
+cars=['bmw','audi','toyota','subaru']
+cars.sort()
+print(cars)
+cars.reverse()
+print(cars)
+print(len(cars))
+```
 
 ## 第四章 操作列表
 
@@ -74,6 +120,18 @@
 
   3. 修改元组变量 虽然不能修改元组但元素，但可以给存储元组但变量赋值
 
+```
+squares=[]
+for value in range(1,11):
+    squares.append(value**2)
+print(squares)
+
+players=['charles','martina','michael','florence','eli']
+print("Here are the first three players on my team:")
+for players in players[0:3]:
+    print(player.title())
+```
+
 ## 第五章 if语句
 
 ### 条件测试
@@ -96,6 +154,24 @@
 
   3. elif代码块 表示多个条件语句
 
+```
+banned_users=['andrew','carolina','david']
+user='marie'
+if user not in banned_users:
+    print(f"{user.title()},you can post a response if you wish.")
+
+age = 12
+if age<4:
+    price=0
+elif age<18:
+    price=25
+elif age<65:
+    price=40
+else:
+    price=20
+print(f"Your admission cost is ${price}.")
+```
+
 ## 第六章 字典
 
 ### 使用字典
@@ -116,6 +192,33 @@
 
   2. 遍历字典中对所有键值
 
+```
+alien_0={'color':'green','points';5}
+print(alien_0['color'])
+
+alien_0['x_position']=0
+alien_0['y_position']=25
+print(alien_0)
+
+alien_0['color']='yellow'
+print(f"The alien is now {alien_0['color']}.")
+
+del alien_0['points']
+print(alien_0)
+
+alien_1={'color':'green','speed':'slow'}
+point_value=alien_0.get('point','No point value assigned.')
+print(point_value)
+
+user_0={
+    'username':'efermi',
+    'first':'enrico',
+    'last':'fermi',
+}
+for key,value in user_0.items():
+    print(f"key:{key}")
+    print(f"value:{value}")
+```
 ## 第七章 用户输入和while循环
 
 ### 函数input()的工作原理
@@ -130,6 +233,20 @@
 
 * for循环用于针对集合中的每个元素都执行一个代码块，而while循环则不断运行，直到指定的条件不满足为止。
 
+```
+height=input("how tall are you,in inches?")
+height=int(height)
+if height>=48:
+    print("\nyou are tall enough to ride!")
+else:
+    print("\nyou will be able to ride when you are a little older.")
+
+current_number=1
+while current_number<=5:
+    print(current_number)
+    current_number+=1
+```
+
 ## 第八章 函数
 
 ### 函数定义
@@ -140,14 +257,35 @@
 
 * 需要在程序中多次执行同一项任务时，无须反复编写完成该任务的代码，只需要调用执行该任务的函数，让python运行其中的代码即可。
 
+```
+def greet_user(user_name):
+    print(f"hello!{user_name.title()}")
+greet_user("nana")
+```
+
 ## 第九章 类
 ### 方法__init__()
 
+
+* 方法__init__()是一个特殊方法，每当你根据Dog类创建新实例时，python
+* 都会自动运行它，在这个方法的名称中，开头和末尾各有两个下划线，这是一种
+* 约定，旨在避免python默认方法与普通方法发生名称冲突。务必确保__init__()
+* 的两边都有两个下划线，否则当你使用类来创建实例时，将不会自动调用这个方法，
+* 进而引发难以发现的错误。
+
 ```
-方法__init__()是一个特殊方法，每当你根据Dog类创建新实例时，python
-都会自动运行它，在这个方法的名称中，开头和末尾各有两个下划线，这是一种
-约定，旨在避免python默认方法与普通方法发生名称冲突。务必确保__init__()
-的两边都有两个下划线，否则当你使用类来创建实例时，将不会自动调用这个方法，
-进而引发难以发现的错误。
+class Dog():
+    def __init__(self,name,age):
+        self.name=name
+        self.age=age
+    def sit(self):
+        print(f"{self.name}is now sitting.")
+    def roll_over(self):
+        print(f"{self.name}rolled over!")
+
+my_dog=Dog('willie',6)
+print(f"my dog's name is {my_dog.name}.")
+print(f"my dog is {my_dog.age} years old.")
 ```
+
 
